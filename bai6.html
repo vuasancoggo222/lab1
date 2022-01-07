@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 5+6</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <form action="" id="form-date">
+        <div>
+            <label for="">Day</label>
+            <input type="number" min="1" max="31" id="day">
+        </div>
+        <div>
+            <label for="">Month</label>
+            <input type="number" min="1" max="12" id="month">
+        </div>
+        <div>
+            <label for="">Year</label>
+            <input type="number" id="year">
+        </div>
+        <button id="date-btn">Convert</button>
+    </form>
+    <div class="dateResult"></div>
+    <script>
+        let dayData = document.querySelector('#day');
+        let monthData = document.querySelector('#month');
+        let yearData = document.querySelector('#year');
+        let formDate = document.querySelector('#form-date');
+        let dateResult = document.querySelector('.dateResult');
+        formDate.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        let getDate = `${yearData.value}-${monthData.value}-${dayData.value}` 
+            let nameDayOfWeekResult =  moment(getDate).format('dddd');
+            let newDate = [nameDayOfWeekResult]
+            let result = newDate.map((date)=>`<h3>${date}</h3>`).join("")
+            dateResult.innerHTML = result;
+        })
+    </script>
+    <script src="./moment.js"></script>
+</body>
+</html>

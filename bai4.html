@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list-item">
+
+    </ul>
+    <form action="" id="form">
+        <div>
+            <label for="">ID</label>
+            <input type="number" id="addUserId" value="" placeholder="Nhap Id">
+        </div>
+        <div>
+            <label for="">Name</label>
+            <input type="text" id="addUserName" value="" placeholder="Nhap Ten">
+        </div>
+        <div>
+            <label for="">Gender</label>
+            <select name="" id="chooseGender">
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+            </select>
+        </div>
+        <br>
+        <button id="add">Add</button>
+    </form>
+   <script>
+        let users = [
+            { id: 1, name: 'James Smith', gender: 1 },
+            { id: 2, name: 'Isla Brown', gender: 2 },
+            { id: 3, name: 'Amelia Davies', gender: 2 },
+            { id: 4, name: 'Jacob Evans', gender: 1 },
+        ]
+       let form = document.querySelector('#form');
+        let userId = document.querySelector('#addUserId');
+        let userName = document.querySelector('#addUserName');
+        let userGender = document.querySelector('#chooseGender');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let user = {
+                id: userId.value,
+                name: userName.value,
+                gender: userGender.value,
+            };
+            let AddUser = (user) => {
+                users =[...users,user];
+                render();
+            }
+            AddUser(user);
+        })
+        let render = () => {
+            let gender = "";
+            let getListItem = (users) => {
+                if (users.gender == 1) {
+                    gender = "Male";
+                } else {
+                    gender = "Female";
+                }
+                return `<li class="user-item">${users.id} - ${users.name} - ${gender}</li>`;
+            }
+            let handleUsers = users.map(getListItem).join("");
+            let listItem = document.querySelector('#list-item').innerHTML = handleUsers;
+        }
+        render();
+   </script>
+</body>
+</html>

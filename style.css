@@ -1,0 +1,29 @@
+
+        #target {
+            width: 60px;
+            height: 60px;
+            background-color: #33691E;
+        }
+
+        #color {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .user-item {
+            color: green;
+            text-decoration: underline;
+            cursor: pointer;
+
+        }
+        #el{
+            border: 1px solid #000;
+            min-height: 300px;
+        }
+        .tittle{
+            color: red;
+            font-family: arial;
+        }

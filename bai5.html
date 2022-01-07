@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <div>
+            <lable>Date</lable>
+            <input type="number" class="InputDay">
+        </div>
+        <div>
+            <lable>Month</lable>
+            <input type="number" class="InputMonth">
+        </div>
+        <div>
+            <lable>Year</lable>
+            <input type="number" class="InputYear">
+        </div>
+        <button type="submit">Convert</button>
+    </form>
+    <div class="render"></div>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script>
+        let Form = document.querySelector("#form")
+        let InputDate = document.querySelector(".InputDay")
+        let InputMonth = document.querySelector(".InputMonth")
+        let InputYear = document.querySelector(".InputYear")
+        let render = document.querySelector(".render")
+
+        Form.addEventListener("submit",function(item){
+            item.preventDefault();  
+            let getDate = `${InputYear.value}-${InputMonth.value}-${InputDate.value}` 
+            let Date1 = moment(getDate).format("DD-MM-YYYY")
+            let Date2 = moment(getDate).format("DD/MM/YYYY")
+            let Date3 = moment(getDate).format("DD.MM.YYYY")
+            let Date4 = moment(getDate).format("DD, MMM YYYY")
+            let Date5 = moment(getDate).format("DD, MMMM YYYY")
+            console.log(getDate);
+            let newDate = [Date1,Date2,Date3,Date4,Date5]
+            let result = newDate.map(function(date){
+                return `
+                    <h3>${date}</h3>
+                `
+            }).join("")
+            render.innerHTML = result
+        })
+
+    </script>
+</body>
+</html>
